@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/f00683b7b2.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="isflex">
+        <div class="container">
+            <header class="encabezado">
+                <div>
+                    <h2 class="title">
+                        Generador de Memes
+                    </h2>
+                </div>
+                <div>
+                    <ul>
+                        <li>
+                            <i class="fa-regular fa-file-image"></i>
+                            Imagen
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-font"></i>
+                            Texto
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-lightbulb"></i>
+                            Modo claro
+                        </li>
+                    </ul>
+                </div>
+            </header>
+            <main>
+    
+            </main>
+        </div>
+        <section class="formato">
+            <h3>
+                IMAGEN
+            </h3>
+            <form>
+                <label for="url">
+                    URL:
+                    <input type="text" placeholder="Ingrese la URL de la imagen."/>
+                </label>
+
+                <label for="fondo">
+                    Fondo:
+                </label>
+                <div class="selectores">
+                    <input type="color" id="color"/>
+                    <label>
+                        <select name="fondo">
+                            <option value="ninguno">
+                                Ninguno
+                            </option>
+                            <option value="aclarar">
+                                Aclarar
+                            </option>
+                            <option value="oscurecer">
+                                Oscurecer
+                            </option>
+                            <option value="diferencia">
+                                Diferencia
+                            </option>
+                            <option value="luminosidad">
+                                Luminosidad
+                            </option>
+                            <option value="multiplicar">
+                                Multiplicar
+                            </option>
+                        </select>
+                    </label>
+                </div>
+                <label for="brillo">
+                    Brillo
+                </label>
+                <input type="range" id="brillo"/>
+                <label for="opacidad">
+                    Opacidad
+                </label>
+                <input type="range" id="opacidad"/>
+                <label for="contraste">
+                    Contraste
+                </label>
+                <input type="range" id="contraste"/>
+                <label for="desenfoque">
+                    Desenfoque
+                </label>
+                <input type="range" id="desenfoque"/>
+                <label for="escala-de-grises">
+                    Escala de grises
+                </label>
+                <input type="range" id="escala-de-grises"/>
+                <label for="sepia">
+                    Sepia
+                </label>
+                <input type="range" id="sepia"/>
+                <label for="hue">
+                    HUE
+                </label>
+                <input type="range" id="hue"/>
+                <label for="saturado">
+                    Saturado
+                </label>
+                <input type="range" id="saturado"/>
+                <label for="negativo">
+                    Negativo
+                </label>
+                <input type="range" id="negativo"/>
+                <button>
+                    Reestablecer filtros
+                </button>
+            </form>
+        </section>
+    </div>
+    
+    
+
+    <script src="script.js"></script>
+</body>
+</html>

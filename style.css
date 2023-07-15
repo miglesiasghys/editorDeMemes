@@ -8,41 +8,124 @@ body{
 }
 .isflex{
     display: flex;
+    flex-wrap: wrap;
 }
 .container{
     display: flex;
     flex-direction: column;
+    width: 82%;
     height: 100vh;
-    width: 70%;
 }
+.container-formato{
+    display: flex;
+    flex-direction: column;
+    width: 18%;
+    background-color: #9c9a99;
+}
+.formato{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding-left: 10px;
+    padding-top: 20px;
+    width: 85%;
+    height: 100%;
+    text-align: center;
+}
+.dark-aside{
+    background-color: #2d2c2a;
+    color: #e7e5e6
+}
+.hidden{
+    display: none;
+}
+
+/**/
 .title{
     font-size: 40px;
     font-weight: 600;
 }
 .encabezado{
-    background-color: #e7e5e6;
+    background-color: #b0aaad;
     color:#2d2c2a;
-    padding: 20px 0px;
+    padding: 15px 0px 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 ul{
-    display: flex;
     list-style: none;
 }
-li{
-    padding: 20px;
+.button-box{
+    border-radius: 5px;
+    height: 40px;
+    padding: 0px 5px;
+    margin: 20px 10px 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    border: 1px solid transparent;
+    background-color:#b0aaad;
+    color: #2d2d2d;
 }
-
-li:hover{
+.button-box:hover{
+    border: 1px solid #898581;
+    background-color:#e7e5e698;
     color: #898581;
-
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
-.formato{
+/**/
+.text-description{
+    font-size: 25px;
+    font-weight: 600;
+}
+.selectores{
+    display: flex;
+}
+input{
+    width: 100%;
+    min-height: 20px;
+    margin: 5px 0px;
+    background-color: #e7e6e3;
+    border: 1px solid #7d7978;
+    border-radius: 10px;
+    padding: 0px 5px;
+}
+.input-color{
+    width:50%
+}
+select{
+    width: 100%;
+    height: 40px;
+    padding: 0px 5px;
+    margin: 0px 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    border: 1px solid transparent;
+    background-color:#b0aaad;
+    color: #2d2d2d;
+}
+
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container-box-meme{
+    width: 55%;
+    height: 80vh;
+    background-color: rgb(6, 6, 6);
     display: flex;
     flex-direction: column;
-    width: 15%;
 }
 
+.text-meme{
+    background-color: white;
+    color: black;
+    height: 20%;
+    width: 100%;
+}
+.img-meme{
+    height: 60%;
+    width: 100%;
+}

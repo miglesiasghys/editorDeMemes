@@ -45,15 +45,22 @@
             <main>
                 <div id="box-color" class="container-box-meme">
                     <div class="superior text-meme">
-                        
+                        <p class="text-meme-description">
+                            TOP TEXT
+                        </p>
                     </div>
-                    <div class="img-meme">
-
+                    <div class="img-meme" id="img-meme">
                     </div>
                     <div class="inferior text-meme">
-                        
+                        <p class="text-meme-description">
+                            BOTTOM TEXT
+                        </p>
                     </div>
                 </div>
+                <button type="submit" class="button-box download" id="download">
+                    <i class="fa-solid fa-download"></i>
+                    Descargar meme
+                </button>
             </main>
         </div>
         <div class="container-formato">
@@ -64,7 +71,7 @@
                 <form>
                     <label for="url">
                         URL:
-                        <input type="text" placeholder="Ingrese la URL de la imagen." />
+                        <input type="text" placeholder="Ingrese la URL de la imagen." id="url-input" />
                     </label>
                     <label for="fondo">
                         Fondo:

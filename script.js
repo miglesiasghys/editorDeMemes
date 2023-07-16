@@ -25,8 +25,6 @@ const changeMode=()=>{
     formatAside[1].classList.toggle('dark-aside')
 }
 
-
-
 //
 const cajaColor = document.getElementById('box-color')
 let colorElegido=''
@@ -44,3 +42,17 @@ const obtenerColor=(e)=> {
 inputColor.addEventListener('input', (evento)=>obtenerColor(evento))
 
 inputColor.addEventListener('input', ()=>cambioDeColor(colorElegido))
+
+//
+const imgMeme=document.getElementById('img-meme')
+const inputURL=document.getElementById('url-input')
+
+inputURL.addEventListener('input', (e)=>changeBackground(e))
+
+const changeBackground= (e) => {
+    console.log(e.target.value)
+    imgMeme.style.backgroundImage=`url('${e.target.value}')`
+    // imgMeme.style.backgroundSize='cover'
+    // imgMeme.style.backgroundRepeat='no-repite'
+    // imgMeme.style.backgroundPosition='center'
+}

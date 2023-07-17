@@ -5,10 +5,12 @@ const modeButton=document.getElementById('modo-btn')
 const textAside=document.getElementById('aside-texto');
 const imgAside=document.getElementById('aside-imagen');
 const formatAside=document.getElementsByClassName('container-formato')
+const encabezado=document.getElementsByClassName('encabezado')
+const containerBody=document.getElementsByClassName('container-body')
 
 textButton.addEventListener('click', ()=> hideImgAside())
 imgButton.addEventListener('click', ()=> hideTextAside())
-modeButton.addEventListener('click', ()=> changeMode())
+modeButton.addEventListener('click', (e)=> changeMode(e))
 
 const hideImgAside=()=>{
     imgAside.classList.add('hidden');
@@ -20,9 +22,10 @@ const hideTextAside=()=>{
     imgAside.classList.remove('hidden')
 }
 
-const changeMode=()=>{
-    formatAside[0].classList.toggle('dark-aside')
-    formatAside[1].classList.toggle('dark-aside')
+const changeMode=(e)=>{
+    formatAside[0].classList.toggle('dark-aside');
+    encabezado[0].classList.toggle('dark-header');
+    containerBody[0].classList.toggle('dark-body');
 }
 
 // cambio de color del div img-meme

@@ -45,19 +45,19 @@
             <main>
                 <div id="box-color" class="container-box-meme">
                     <div class="superior text-meme">
-                        <p class="text-meme-description">
+                        <p class="text-meme-description" id="top-text">
                             TOP TEXT
                         </p>
                     </div>
                     <div class="img-meme" id="img-meme">
                     </div>
                     <div class="inferior text-meme">
-                        <p class="text-meme-description">
+                        <p class="text-meme-description" id="bottom-text">
                             BOTTOM TEXT
                         </p>
                     </div>
                 </div>
-                <button type="submit" class="button-box download" id="download">
+                <button type="button" class="button-box download" id="download">
                     <i class="fa-solid fa-download"></i>
                     Descargar meme
                 </button>
@@ -65,7 +65,7 @@
         </div>
         <div class="container-formato">
             <div class="formato imagen" id="aside-imagen">
-                <h3 class="text-description">
+                <h3 class="text-description title">
                     IMAGEN
                 </h3>
                 <form>
@@ -77,8 +77,11 @@
                         Fondo:
                     </label>
                     <div class="selectores">
-                        <input type="color" class="input-color" id="input-color" />
-                        <label>
+                        <div class="box-change-color">
+                            <input type="color" class="input-color" id="input-color" />
+                            <p id="color-name">#000000</p>
+                        </div>
+                        <label class="filters">
                             <select name="fondo">
                                 <option value="ninguno">
                                     Ninguno
@@ -95,55 +98,55 @@
                                 <option value="luminosidad">
                                     Luminosidad
                                 </option>
-                                <option value="multiplicar">
+                                <option value="multiplicar"id="multiply">
                                     Multiplicar
                                 </option>
                             </select>
                         </label>
                     </div>
-                    <label for="brillo">
+                    <label for="bright-input">
                         Brillo
                     </label>
-                    <input type="range" id="brillo" />
-                    <label for="opacidad">
+                    <input type="range" id="bright-input" min="0" max="1" value="1" step="0.1" />
+                    <label for="opacity-input">
                         Opacidad
                     </label>
-                    <input type="range" id="opacidad" />
-                    <label for="contraste">
+                    <input type="range" id="opacity-input" min="0" max="1" value="1" step="0.1" />
+                    <label for="contrast-input">
                         Contraste
                     </label>
-                    <input type="range" id="contraste" />
-                    <label for="desenfoque">
+                    <input type="range" id="contrast-input" min="100" max="1000" value="100" step="1" />
+                    <label for="blur-input">
                         Desenfoque
                     </label>
-                    <input type="range" id="desenfoque" />
-                    <label for="escala-de-grises">
+                    <input type="range" id="blur-input" min="0" max="10" value="0" step="0.1" />
+                    <label for="grayscale-input">
                         Escala de grises
                     </label>
-                    <input type="range" id="escala-de-grises" />
-                    <label for="sepia">
+                    <input type="range" id="grayscale-input" min="0" max="100" value="0" step="1"  />
+                    <label for="sepia-input">
                         Sepia
                     </label>
-                    <input type="range" id="sepia" />
-                    <label for="hue">
+                    <input type="range" id="sepia-input" min="0" max="100" value="0" step="1" />
+                    <label for="hue-input">
                         HUE
                     </label>
-                    <input type="range" id="hue" />
-                    <label for="saturado">
+                    <input type="range" id="hue-input" min="0" max="359" value="0" step="1" />
+                    <label for="saturation-input">
                         Saturado
                     </label>
-                    <input type="range" id="saturado" />
-                    <label for="negativo">
+                    <input type="range" id="saturation-input" min="100" max="1000" value="100" step="10" />
+                    <label for="invert-input">
                         Negativo
                     </label>
-                    <input type="range" id="negativo" />
+                    <input type="range" id="invert-input" min="0" max="1" value="0" step="0.1" />
                     <button class="button-box" type="reset">
                         Reestablecer filtros
                     </button>
                 </form>
             </div>
             <div class="formato hidden texto" id="aside-texto">
-                <h3 class="text-description">
+                <h3 class="text-description title">
                     TEXTO
                 </h3>
                 <form>
@@ -151,7 +154,7 @@
                         Superior:
                     </label>
                     <input type="text" id="superior" placeholder="TOP TEXT"/>
-                    <div>
+                    <div class="checkbox-container">
                         <input type="checkbox" id="checkbox-superior"/>
                         <label for="checkbox-superior">
                             Sin texto superior
@@ -161,7 +164,7 @@
                         Inferior:
                     </label>
                     <input type="text" id="inferior" placeholder="BOTTOM TEXT"/>
-                    <div>
+                    <div class="checkbox-container">
                         <input type="checkbox" id="checkbox-inferior"/>
                         <label for="checkbox-inferior">
                             Sin texto inferior
@@ -169,30 +172,109 @@
                     </div>
                     <label for="font">
                         Fuente:
-                        <select name="font-select" id="font">
-                            <option value="arial">
-                                Arial
-                            </option>
-                            <option value="arial-black">
-                                Arial Black
-                            </option>
-                            <option value="comic-sans-ms">
-                                Comic Sans MS
-                            </option>
-                            <option value="helvetica">
-                                Helvetica
-                            </option>
-                            <option value="impact">
-                                Impact
-                            </option>
-                            <option value="verdana">
-                                Verdana
-                            </option>
-                            <option value="times-new-roman">
-                                Times New Roman
-                            </option>
-                        </select>
                     </label>
+                    <select name="font-select" id="font">
+                        <option value="arial">
+                            Arial
+                        </option>
+                        <option value="arial-black">
+                            Arial Black
+                        </option>
+                        <option value="comic-sans-ms">
+                            Comic Sans MS
+                        </option>
+                        <option value="helvetica">
+                            Helvetica
+                        </option>
+                        <option value="impact">
+                            Impact
+                        </option>
+                        <option value="verdana">
+                            Verdana
+                        </option>
+                        <option value="times-new-roman">
+                            Times New Roman
+                        </option>
+                    </select>
+                    <div class="container-format-text">
+                        <input type="number" min="12" max="100" step="1" value="37" id="input-font-size" class="input-number-font"/>
+                        <div class="container-btn-align">
+                            <button type="button" class="button-align">
+                                <i class="fa-solid fa-align-left"></i>
+                            </button>
+                            <button type="button" class="button-align">
+                                <i class="fa-solid fa-align-center"></i>
+                            </button>
+                            <button type="button" class="button-align">
+                                <i class="fa-solid fa-align-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <label for="input-text-color">
+                                COLOR
+                            </label>
+                            <div class="box-change-color">
+                                <input type="color" class="input-color" id="input-text-color" />
+                                <p id="color-name">#000000</p>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="input-text-background"></label>
+                            <div class="box-change-color">
+                                <input type="color" class="input-color" id="input-text-background" />
+                                <p id="color-name">#000000</p>
+                            </div>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="checkbox-transparent"/>
+                            <label for="checkbox-transparent">
+                                Fondo transparente
+                            </label>
+                        </div>
+                    </div>
+                    <label for="contorno">
+                        CONTORNO
+                    </label>
+                    <div>
+                        <button type="button">
+                            Ninguno
+                        </button>
+                        <button type="button">
+                            Claro
+                        </button>
+                        <button type="button">
+                            Oscuro
+                        </button>
+                    </div>
+                    <label for="espaciado">
+                        ESPACIADO
+                    </label>
+                    <input type="number" id="espaciado"min="10" max="50" value="14" />
+                    <label for="interlineado">
+                        INTERLINEADO
+                    </label>
+                    <select>
+                        <option value="0.8">
+                            0.8
+                        </option>
+                        <option value="1">
+                            1
+                        </option>
+                        <option value="1.2">
+                            1.2
+                        </option>
+                        <option value="1.5">
+                            1.5
+                        </option>
+                        <option value="2">
+                            2
+                        </option>
+                        <option value="2.5">
+                            2.5
+                        </option>
+                    </select>
                 </form>
             </div>
         </div>

@@ -9,10 +9,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;900&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/f00683b7b2.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"
+        integrity="sha512-csNcFYJniKjJxRWRV1R7fvnXrycHP6qDR21mgz1ZP55xY5d+aHLfo9/FcGDQLfn2IfngbAHd8LdfsagcCqgTcQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"
+        integrity="sha512-01CJ9/g7e8cUmY0DFTMcUw/ikS799FHiOA0eyHsUWfOetgbx/t6oV4otQ5zXKQyIrQGTHSmRVPIgrgLcZi/WMA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    </script>
+    <link rel="stylesheet" href="https://use.typekit.net/nub2mlb.css">
 </head>
 <body>
     <div class="isflex container-body">
         <div class="container">
+            <!-- INICIO DE HEADER -->
             <header class="encabezado">
                 <div>
                     <h2 class="title">
@@ -34,36 +44,44 @@
                             </button>
                         </li>
                         <li>
-                            <button class="button-box" id="modo-btn">
-                                <i class="fa-solid fa-lightbulb"></i>
+                            <button class="button-box isflex" id="modo-btn">
+                                <i class="fa-regular fa-lightbulb"></i>
+                                <p id="mode-btn-text">
                                 Modo claro
                             </button>
                         </li>
                     </ul>
                 </div>
             </header>
+            <!-- FINAL DE HEADER  -->
+
+            <!-- INICIO DE MAIN -->
             <main>
-                <div id="box-color" class="container-box-meme">
-                    <div class="superior text-meme">
+                <div id="box-meme" class="container-box-meme">
+                    <div class="text-meme" id="container-top-text">
                         <p class="text-meme-description" id="top-text">
                             TOP TEXT
                         </p>
                     </div>
                     <div class="img-meme" id="img-meme">
                     </div>
-                    <div class="inferior text-meme">
+                    <div class="text-meme" id="container-bottom-text">
                         <p class="text-meme-description" id="bottom-text">
                             BOTTOM TEXT
                         </p>
                     </div>
                 </div>
-                <button type="button" class="button-box download" id="download">
+                <button type="button" class="button-box download" id="download-btn">
                     <i class="fa-solid fa-download"></i>
                     Descargar meme
                 </button>
             </main>
+            <!-- FINAL DE MAIN  -->
+
         </div>
         <div class="container-formato">
+
+            <!-- INICIO ASIDE IMAGEN -->
             <div class="formato" id="aside-imagen">
                 <h3 class="text-description title">
                     IMAGEN
@@ -147,6 +165,9 @@
                     </button>
                 </form>
             </div>
+            <!-- FINAL ASIDE IMAGEN -->
+
+            <!-- INICIO ASIDE TEXTO  -->
             <div class="formato hidden" id="aside-texto">
                 <h3 class="text-description title">
                     TEXTO
@@ -157,7 +178,7 @@
                     </label>
                     <input type="text" id="superior" placeholder="TOP TEXT"/>
                     <div class="checkbox-container">
-                        <input type="checkbox" id="checkbox-superior"/>
+                        <input type="checkbox" id="checkbox-top-input"/>
                         <label for="checkbox-superior">
                             Sin texto superior
                         </label>
@@ -167,7 +188,7 @@
                     </label>
                     <input type="text" id="inferior" placeholder="BOTTOM TEXT"/>
                     <div class="checkbox-container">
-                        <input type="checkbox" id="checkbox-inferior"/>
+                        <input type="checkbox" id="checkbox-bottom-input"/>
                         <label for="checkbox-inferior">
                             Sin texto inferior
                         </label>
@@ -175,26 +196,38 @@
                     <label for="font">
                         Fuente:
                     </label>
-                    <select name="font-select" id="font">
-                        <option value="arial">
+                    <select name="font-select" id="font-selector">
+                        <option selected disabled>
+                            Elija una fuente...
+                        </option>
+                        <option value="'Montserrat', sans-serif">
+                            Monserrat
+                        </option>
+                        <option value="Arial, Helvetica, sans-serif">
                             Arial
                         </option>
-                        <option value="arial-black">
+                        <option value="'Arial Black', Gadget, sans-serif">
                             Arial Black
                         </option>
-                        <option value="comic-sans-ms">
+                        <option value="'itc-american-typewriter', serif">
+                            American Typewriter
+                        </option>
+                        <option value="'Andale Mono', AndaleMono, monospace">
+                            Andale Mono
+                        </option>
+                        <option value="'Comic Sans MS', cursive">
                             Comic Sans MS
                         </option>
-                        <option value="helvetica">
+                        <option value="Helvetica, 'Trebuchet MS', Verdana, sans-serif">
                             Helvetica
                         </option>
-                        <option value="impact">
+                        <option value="Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">
                             Impact
                         </option>
-                        <option value="verdana">
+                        <option value="Verdana, Geneva, Tahoma, sans-serif">
                             Verdana
                         </option>
-                        <option value="times-new-roman">
+                        <option value="'Times New Roman', Times, serif">
                             Times New Roman
                         </option>
                     </select>
@@ -279,8 +312,9 @@
                     </select>
                 </form>
             </div>
+            <!-- FINAL ASIDE TEXTO  -->
+
         </div>
-        
     </div>
 
     <script src="script.js"></script>

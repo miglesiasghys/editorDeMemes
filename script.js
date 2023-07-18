@@ -1,3 +1,5 @@
+// cambio de modo y cambio de aside
+
 const textButton=document.getElementById('texto-btn');
 const imgButton=document.getElementById('imagen-btn')
 const modeButton=document.getElementById('modo-btn')
@@ -26,22 +28,25 @@ const changeMode=(e)=>{
     formatAside[0].classList.toggle('dark-aside');
     encabezado[0].classList.toggle('dark-header');
     containerBody[0].classList.toggle('dark-body');
+    if (modeButton.innerText === "Modo oscuro") {
+    modeButton.innerHTML = '<i class="fa-regular fa-lightbulb"></i> Modo claro';
+    } else {
+    modeButton.innerHTML = '<i class="fa-solid fa-lightbulb"></i> Modo oscuro';
+    }
 }
 
 // cambio de color del div img-meme
 
-const cajaColor = document.getElementById('box-color')
+const boxMeme = document.getElementById('box-meme')
 const inputColor=document.getElementById('input-color')
 const colorName=document.getElementById('color-name')
 
 const cambioDeColor = (e) =>{
-    cajaColor.style.backgroundColor= `${e.target.value}`
+    boxMeme.style.backgroundColor= `${e.target.value}`
     colorName.textContent=`${inputColor.value}`
 }
 
 inputColor.addEventListener('input', (e)=>cambioDeColor(e))
-
-
 
 // imagen del meme
 
@@ -58,18 +63,15 @@ const changeBackground= (e) => {
 
 const topText=document.getElementById('top-text')
 const inputTop=document.getElementById('superior')
+const bottomText=document.getElementById('bottom-text')
+const inputBottom=document.getElementById('inferior')
 
 inputTop.addEventListener('change', (e)=>changeTextTop(e))
+inputBottom.addEventListener('change', (e)=>changeTextBottom(e))
 
 const changeTextTop= (e) => {
     topText.textContent=`${e.target.value}`
 }
-
-const bottomText=document.getElementById('bottom-text')
-const inputBottom=document.getElementById('inferior')
-
-inputBottom.addEventListener('change', (e)=>changeTextBottom(e))
-
 const changeTextBottom= (e) => {
     bottomText.textContent=`${e.target.value}`
 }
@@ -109,18 +111,50 @@ hueInput.addEventListener('input', (e)=>filtros(e))
 saturationInput.addEventListener('input', (e)=>filtros(e))
 invertInput.addEventListener('input', (e)=>filtros(e))
 
-//
+// checkbox
 
+const checkboxTopInput=document.getElementById('checkbox-top-input')
+const checkboxBottomInput=document.getElementById('checkbox-bottom-input')
+const containerTopText=document.getElementById('container-top-text')
+const containerBottomText=document.getElementById('container-bottom-text')
 
+checkboxTopInput.addEventListener('change', ()=> hideTopText())
+checkboxBottomInput.addEventListener('change', ()=> hideBottomText())
 
-//descargar
-const downloadBtn=document.getElementById('download')
-const finalMeme = document.getElementById("box-color");
+const hideTopText=()=>{
+    if (checkboxTopInput.checked){
+        containerTopText.classList.add('hidden')
+    }else{
+        containerTopText.classList.remove('hidden')
+    }
+}
+const hideBottomText=()=>{
+    if (checkboxBottomInput.checked){
+        containerBottomText.classList.add('hidden')
+    }else{
+        containerBottomText.classList.remove('hidden')
+    }
+}
+//selector de fuentes 
 
-downloadBtn.addEventListener('click', () => downloadMeme());
+const fontSelector=document.getElementById('font-selector')
+const textDescriptionMeme=document.getElementsByClassName('text-meme-description')
 
-const downloadMeme = () => {
-    doToImage.toBlob(meme).then(function (blob) {
-    window.saveAs(blob, "mi-meme.png")
+fontSelector.addEventListener('change', ()=>changeFontFamily())
+
+const changeFontFamily= ()=>{
+    textDescriptionMeme[0].style.fontFamily=fontSelector.value
+    textDescriptionMeme[1].style.fontFamily=fontSelector.value
+}
+
+//btn de descarga
+
+const downloadBtn=document.getElementById('download-btn')
+
+downloadBtn.addEventListener('click', ()=>downloadMeme());
+
+const downloadMeme=()=>{
+    domtoimage.toBlob(boxMeme).then(function (blob) {
+    window.saveAs(blob, "mi-meme.jpg")
 })
 }

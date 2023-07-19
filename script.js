@@ -179,6 +179,18 @@ const changeFontFamily= ()=>{
     textDescriptionMeme[0].style.fontFamily=fontSelector.value
     textDescriptionMeme[1].style.fontFamily=fontSelector.value
 }
+//
+
+// const inputFontSize=document.getElementById('input-font-size')
+// console.log(inputFontSize.value)
+
+// inputFontSize.addEventListener('change', ()=>changeFontSize())
+
+// const changeFontSize=()=>{
+//     topText.style.fontSize=inputFontSize.value
+//     bottomText.style.fontSize=inputFontSize.value
+//     console.log(changeFontSize(inputFontSize.value))
+// }
 
 // btn text align
 
@@ -228,4 +240,65 @@ const reset=()=>{
     topText.textContent=('TOP TEXT')
     bottomText.textContent=('BOTTOM TEXT')
     colorName.textContent=('#000000')
+}
+
+// botones de contorno de texto 
+
+const btnNotContour=document.getElementById('btn-not-contour')
+console.log(btnNotContour)
+const btnLightContour=document.getElementById('btn-light-contour')
+console.log(btnLightContour)
+const btnDarkContour=document.getElementById('btn-dark-contour')
+console.log(btnDarkContour)
+
+btnNotContour.addEventListener('click', ()=>notContour())
+btnLightContour.addEventListener('click', ()=>lightContour())
+btnDarkContour.addEventListener('click', ()=> darkContour())
+
+const notContour=()=>{
+    textDescriptionMeme[0].style.textShadow='none'
+    textDescriptionMeme[1].style.textShadow='none'
+}
+const lightContour=()=>{
+    textDescriptionMeme[0].style.textShadow="2px 2px 0px white, 2px -2px 0px white, -2px 2px 0px white, -2px -2px 0px white, 2px 0px 0px white, 0px 2px 0px white, -2px 0px 0px white, 0px -2px 0px white"
+    textDescriptionMeme[1].style.textShadow="2px 2px 0px white, 2px -2px 0px white, -2px 2px 0px white, -2px -2px 0px white, 2px 0px 0px white, 0px 2px 0px white, -2px 0px 0px white, 0px -2px 0px white"
+}
+const darkContour=()=>{
+    textDescriptionMeme[0].style.textShadow='2px 2px 0px black, 2px -2px 0px black, -2px 2px 0px black, -2px -2px 0px black, 2px 0px 0px black, 0px 2px 0px black, -2px 0px 0px black, 0px -2px 0px black'
+    textDescriptionMeme[1].style.textShadow='2px 2px 0px black, 2px -2px 0px black, -2px 2px 0px black, -2px -2px 0px black, 2px 0px 0px black, 0px 2px 0px black, -2px 0px 0px black, 0px -2px 0px black'
+}
+
+//input color de texto y de background
+
+const inputColorText=document.getElementById('input-text-color')
+const colorNameText=document.getElementById('color-name-text')
+
+inputColorText.addEventListener('input', (e)=>changeColorText(e))
+
+const changeColorText = (e) =>{
+    textDescriptionMeme[0].style.color= `${e.target.value}`
+    textDescriptionMeme[1].style.color= `${e.target.value}`
+    colorNameText.textContent=`${inputColorText.value}`
+}
+
+const inputColorBackground=document.getElementById('input-text-background')
+const colorNameBackground=document.getElementById('color-name-background')
+
+inputColorBackground.addEventListener('input', (e)=>changeColorBackground(e))
+
+const changeColorBackground = (e) =>{
+    textMemeBackground[0].style.backgroundColor= `${e.target.value}`
+    textMemeBackground[1].style.backgroundColor= `${e.target.value}`
+    colorNameBackground.textContent=`${inputColorBackground.value}`
+}
+
+// cambiar interlineado
+
+const lineHeightSelector=document.getElementById('select-line-height')
+
+lineHeightSelector.addEventListener('change', ()=> changeLineHeight())
+
+const changeLineHeight=()=>{
+    textDescriptionMeme[0].style.lineHeight=lineHeightSelector.value
+    textDescriptionMeme[1].style.lineHeight=lineHeightSelector.value
 }

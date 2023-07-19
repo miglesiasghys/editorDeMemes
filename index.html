@@ -194,7 +194,6 @@
                             Sin texto inferior
                         </label>
                     </div>
-                    <!-- /*deje aca*/ -->
                     <label for="font">
                         Fuente:
                     </label>
@@ -234,7 +233,9 @@
                         </option>
                     </select>
                     <div class="container-format-text">
-                        <input type="number" min="12" max="100" step="1" value="37" id="input-font-size" class="input-number-font"/>
+                        <!-- falta -->
+                        <input type="number" min="12" max="40" step="1" value="30" id="input-font-size" class="input-number-font"/>
+                        <!-- falta -->
                         <div class="container-btn-align">
                             <button type="button" class="button-align" id="btn-align-left">
                                 <i class="fa-solid fa-align-left"></i>
@@ -248,58 +249,55 @@
                         </div>
                     </div>
                     <div>
-                        <div>
-                            <label for="input-text-color">
-                                COLOR
-                            </label>
+                        <label for="input-text-color">
+                                Color:
+                        </label>
+                        <div class="container-input-color">
                             <div class="box-change-color">
                                 <input type="color" class="input-color" id="input-text-color" />
-                                <p id="color-name">#000000</p>
+                                <p id="color-name-text">#000000</p>
                             </div>
-                        </div>
-                        <div>
-                            <label for="input-text-background"></label>
                             <div class="box-change-color">
                                 <input type="color" class="input-color" id="input-text-background" />
-                                <p id="color-name">#000000</p>
+                                <p id="color-name-background">#000000</p>
                             </div>
                         </div>
-                        <div>
+                        <div class="checkbox-container">
                             <input type="checkbox" id="checkbox-transparent"/>
-                            <label for="checkbox-transparent">
+                            <label for="checkbox-transparent" class="text-hidden">
                                 Fondo transparente
                             </label>
                         </div>
                     </div>
                     <label for="contorno">
-                        CONTORNO
+                        Contorno:
                     </label>
-                    <div>
-                        <button type="button" class="btn-box">
+                    <div class="isflex">
+                        <button type="button" class="btn-box btn-contour" id="btn-not-contour">
                             Ninguno
                         </button>
-                        <button type="button" class="btn-box">
+                        <button type="button" class="btn-box btn-contour" id="btn-light-contour">
                             Claro
                         </button>
-                        <button type="button" class="btn-box">
+                        <button type="button" class="btn-box btn-contour" id="btn-dark-contour">
                             Oscuro
                         </button>
                     </div>
                     <label for="espaciado">
-                        ESPACIADO
+                        Espaciado:
                     </label>
                     <input type="number" id="espaciado"min="10" max="50" value="14" />
                     <label for="interlineado">
-                        INTERLINEADO
+                        Interlineado:
                     </label>
-                    <select>
+                    <select name="interlineado" id="select-line-height">
                         <option value="0.8">
                             0.8
                         </option>
                         <option value="1">
                             1
                         </option>
-                        <option value="1.2">
+                        <option value="1.2" selected>
                             1.2
                         </option>
                         <option value="1.5">

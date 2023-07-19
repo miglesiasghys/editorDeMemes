@@ -59,18 +59,14 @@
             <!-- INICIO DE MAIN -->
             <main>
                 <div id="box-meme" class="container-box-meme">
-                    <div class="text-meme" id="container-top-text">
-                        <p class="text-meme-description" id="top-text">
-                            TOP TEXT
-                        </p>
-                    </div>
+                    <p class="text-meme" id="top-text">
+                        TOP TEXT
+                    </p>
                     <div class="img-meme" id="img-meme">
                     </div>
-                    <div class="text-meme" id="container-bottom-text">
-                        <p class="text-meme-description" id="bottom-text">
-                            BOTTOM TEXT
-                        </p>
-                    </div>
+                    <p class="text-meme" id="bottom-text">
+                        BOTTOM TEXT
+                    </p>
                 </div>
                 <button type="button" class="btn-box download" id="download-btn">
                     <i class="fa-solid fa-download"></i>
@@ -84,6 +80,7 @@
 
             <!-- INICIO ASIDE IMAGEN -->
             <div class="format isflex" id="aside-imagen">
+                <button type="button" class="btn-close"><i class="fa-solid fa-xmark"></i></button>
                 <h3 class="text-description title">
                     IMAGEN
                 </h3>
@@ -170,6 +167,7 @@
 
             <!-- INICIO ASIDE TEXTO  -->
             <div class="format hidden isflex" id="aside-texto">
+                <button type="button" class="btn-close"><i class="fa-solid fa-xmark"></i></button>
                 <h3 class="text-description title">
                     TEXTO
                 </h3>
@@ -177,7 +175,7 @@
                     <label for="top-text-input">
                         Superior:
                     </label>
-                    <textarea name="top-text-input" id="top-text-input" cols="10" rows="2" maxlength="35" placeholder="TOP TEXT"></textarea>
+                    <textarea name="top-text-input" id="top-text-input" cols="10" rows="2" maxlength="30" placeholder="TOP TEXT"></textarea>
                     <div class="checkbox-container">
                         <input type="checkbox" id="checkbox-top-input"/>
                         <label for="checkbox-top-input" class="text-hidden">
@@ -187,7 +185,7 @@
                     <label for="inferior">
                         Inferior:
                     </label>
-                    <textarea name="inferior" id="inferior" cols="10" rows="2" placeholder="BOTTOM TEXT" maxlength="35"></textarea>
+                    <textarea name="inferior" id="inferior" cols="10" rows="2" placeholder="BOTTOM TEXT" maxlength="30"></textarea>
                     <div class="checkbox-container">
                         <input type="checkbox" id="checkbox-bottom-input"/>
                         <label for="checkbox-inferior" class="text-hidden">
@@ -233,9 +231,7 @@
                         </option>
                     </select>
                     <div class="container-format-text">
-                        <!-- falta -->
-                        <input type="number" min="12" max="40" step="1" value="30" id="input-font-size" class="input-number-font"/>
-                        <!-- falta -->
+                        <input type="number" min="12" max="60" step="1" value="30" id="input-font-size" class="input-number-font"/>
                         <div class="container-btn-align">
                             <button type="button" class="button-align" id="btn-align-left">
                                 <i class="fa-solid fa-align-left"></i>
@@ -286,7 +282,7 @@
                     <label for="espaciado">
                         Espaciado:
                     </label>
-                    <input type="number" id="espaciado"min="10" max="50" value="14" />
+                    <input type="number" id="input-padding" min="35" max="60" value="35" />
                     <label for="interlineado">
                         Interlineado:
                     </label>

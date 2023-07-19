@@ -33,6 +33,9 @@ const changeMode=()=>{
     btnBox[1].classList.toggle('dark-btn')
     btnBox[2].classList.toggle('dark-btn')
     btnBox[4].classList.toggle('dark-btn')
+    btnClose[0].classList.toggle('dark-btn-close')
+    btnClose[1].classList.toggle('dark-btn-close')
+
     if (modeButton.innerText === "Modo oscuro") {
     modeButton.innerHTML = '<i class="fa-regular fa-lightbulb"></i> Modo claro';
     } else {
@@ -134,10 +137,8 @@ const changeTextBottom= (e) => {
 
 const checkboxTopInput=document.getElementById('checkbox-top-input')
 const checkboxBottomInput=document.getElementById('checkbox-bottom-input')
-const containerTopText=document.getElementById('container-top-text')
-const containerBottomText=document.getElementById('container-bottom-text')
 const checkboxTransparent=document.getElementById('checkbox-transparent')
-const textMemeBackground=document.getElementsByClassName('text-meme')
+const textMeme=document.getElementsByClassName('text-meme')
 
 checkboxTopInput.addEventListener('change', ()=> hideTopText())
 checkboxBottomInput.addEventListener('change', ()=> hideBottomText())
@@ -146,55 +147,53 @@ checkboxTransparent.addEventListener('change', ()=> boxTextTransparent())
 
 const hideTopText=()=>{
     if (checkboxTopInput.checked){
-        containerTopText.classList.add('hidden')
+        topText.classList.add('hidden')
     }else{
-        containerTopText.classList.remove('hidden')
+        topText.classList.remove('hidden')
     }
 }
 const hideBottomText=()=>{
     if (checkboxBottomInput.checked){
-        containerBottomText.classList.add('hidden')
+        bottomText.classList.add('hidden')
     }else{
-        containerBottomText.classList.remove('hidden')
+        bottomText.classList.remove('hidden')
     }
 }
 const boxTextTransparent=()=>{
     if (checkboxTransparent.checked){
-        textMemeBackground[0].classList.add('transparent')
-        textMemeBackground[1].classList.add('transparent')
+        textMeme[0].classList.add('transparent-top')
+        textMeme[1].classList.add('transparent-bottom')
     }else{
-        textMemeBackground[0].classList.remove('transparent')
-        textMemeBackground[1].classList.remove('transparent')
+        textMeme[0].classList.remove('transparent-top')
+        textMeme[1].classList.remove('transparent-bottom')
     }
 }
 
 //selector de fuentes 
 
 const fontSelector=document.getElementById('font-selector')
-const textDescriptionMeme=document.getElementsByClassName('text-meme-description')
 
 fontSelector.addEventListener('change', ()=>changeFontFamily())
 
 const changeFontFamily= ()=>{
-    textDescriptionMeme[0].style.fontFamily=fontSelector.value
-    textDescriptionMeme[1].style.fontFamily=fontSelector.value
+    textMeme[0].style.fontFamily=fontSelector.value
+    textMeme[1].style.fontFamily=fontSelector.value
 }
 //
 
-// const inputFontSize=document.getElementById('input-font-size')
-// console.log(inputFontSize.value)
+const inputFontSize=document.getElementById('input-font-size')
 
-// inputFontSize.addEventListener('change', ()=>changeFontSize())
+inputFontSize.addEventListener('change', ()=>changeFontSize())
 
-// const changeFontSize=()=>{
-//     topText.style.fontSize=inputFontSize.value
-//     bottomText.style.fontSize=inputFontSize.value
-//     console.log(changeFontSize(inputFontSize.value))
-// }
+const changeFontSize=()=>{
+    topText.style.fontSize=`${inputFontSize.value}px`
+    bottomText.style.fontSize=`${inputFontSize.value}px`
+}
 
 // btn text align
 
 const btnAlignLeft=document.getElementById('btn-align-left')
+console.log(btnAlignLeft)
 const btnAlignCenter=document.getElementById('btn-align-center')
 const btnAlignRight=document.getElementById('btn-align-right')
 
@@ -203,16 +202,19 @@ btnAlignCenter.addEventListener('click', ()=>changeAlignCenter())
 btnAlignRight.addEventListener('click', ()=>changeAlignRight())
 
 const changeAlignLeft=()=>{
-    topText.style.textAlign='left'
-    bottomText.style.textAlign= 'left'
+    textMeme[0].style.justifyContent='start'
+    textMeme[1].style.justifyContent='start'
 }
+
 const changeAlignCenter=()=>{
-    topText.style.textAlign='center'
-    bottomText.style.textAlign= 'center'
+    textMeme[0].style.justifyContent='center'
+    textMeme[1].style.justifyContent='center'
+    console.log(changeAlignCenter)
 }
 const changeAlignRight=()=>{
-    topText.style.textAlign='right'
-    bottomText.style.textAlign= 'right'
+    textMeme[0].style.justifyContent='end'
+    textMeme[1].style.justifyContent='end'
+    console.log(changeAlignRight)
 }
 
 //btn de descarga
@@ -245,27 +247,24 @@ const reset=()=>{
 // botones de contorno de texto 
 
 const btnNotContour=document.getElementById('btn-not-contour')
-console.log(btnNotContour)
 const btnLightContour=document.getElementById('btn-light-contour')
-console.log(btnLightContour)
 const btnDarkContour=document.getElementById('btn-dark-contour')
-console.log(btnDarkContour)
 
 btnNotContour.addEventListener('click', ()=>notContour())
 btnLightContour.addEventListener('click', ()=>lightContour())
 btnDarkContour.addEventListener('click', ()=> darkContour())
 
 const notContour=()=>{
-    textDescriptionMeme[0].style.textShadow='none'
-    textDescriptionMeme[1].style.textShadow='none'
+    textMeme[0].style.textShadow='none'
+    textMeme[1].style.textShadow='none'
 }
 const lightContour=()=>{
-    textDescriptionMeme[0].style.textShadow="2px 2px 0px white, 2px -2px 0px white, -2px 2px 0px white, -2px -2px 0px white, 2px 0px 0px white, 0px 2px 0px white, -2px 0px 0px white, 0px -2px 0px white"
-    textDescriptionMeme[1].style.textShadow="2px 2px 0px white, 2px -2px 0px white, -2px 2px 0px white, -2px -2px 0px white, 2px 0px 0px white, 0px 2px 0px white, -2px 0px 0px white, 0px -2px 0px white"
+    textMeme[0].style.textShadow="2px 2px 0px white, 2px -2px 0px white, -2px 2px 0px white, -2px -2px 0px white, 2px 0px 0px white, 0px 2px 0px white, -2px 0px 0px white, 0px -2px 0px white"
+    textMeme[1].style.textShadow="2px 2px 0px white, 2px -2px 0px white, -2px 2px 0px white, -2px -2px 0px white, 2px 0px 0px white, 0px 2px 0px white, -2px 0px 0px white, 0px -2px 0px white"
 }
 const darkContour=()=>{
-    textDescriptionMeme[0].style.textShadow='2px 2px 0px black, 2px -2px 0px black, -2px 2px 0px black, -2px -2px 0px black, 2px 0px 0px black, 0px 2px 0px black, -2px 0px 0px black, 0px -2px 0px black'
-    textDescriptionMeme[1].style.textShadow='2px 2px 0px black, 2px -2px 0px black, -2px 2px 0px black, -2px -2px 0px black, 2px 0px 0px black, 0px 2px 0px black, -2px 0px 0px black, 0px -2px 0px black'
+    textMeme[0].style.textShadow='2px 2px 0px black, 2px -2px 0px black, -2px 2px 0px black, -2px -2px 0px black, 2px 0px 0px black, 0px 2px 0px black, -2px 0px 0px black, 0px -2px 0px black'
+    textMeme[1].style.textShadow='2px 2px 0px black, 2px -2px 0px black, -2px 2px 0px black, -2px -2px 0px black, 2px 0px 0px black, 0px 2px 0px black, -2px 0px 0px black, 0px -2px 0px black'
 }
 
 //input color de texto y de background
@@ -276,8 +275,8 @@ const colorNameText=document.getElementById('color-name-text')
 inputColorText.addEventListener('input', (e)=>changeColorText(e))
 
 const changeColorText = (e) =>{
-    textDescriptionMeme[0].style.color= `${e.target.value}`
-    textDescriptionMeme[1].style.color= `${e.target.value}`
+    textMeme[0].style.color= `${e.target.value}`
+    textMeme[1].style.color= `${e.target.value}`
     colorNameText.textContent=`${inputColorText.value}`
 }
 
@@ -287,8 +286,8 @@ const colorNameBackground=document.getElementById('color-name-background')
 inputColorBackground.addEventListener('input', (e)=>changeColorBackground(e))
 
 const changeColorBackground = (e) =>{
-    textMemeBackground[0].style.backgroundColor= `${e.target.value}`
-    textMemeBackground[1].style.backgroundColor= `${e.target.value}`
+    textMeme[0].style.backgroundColor= `${e.target.value}`
+    textMeme[1].style.backgroundColor= `${e.target.value}`
     colorNameBackground.textContent=`${inputColorBackground.value}`
 }
 
@@ -299,6 +298,54 @@ const lineHeightSelector=document.getElementById('select-line-height')
 lineHeightSelector.addEventListener('change', ()=> changeLineHeight())
 
 const changeLineHeight=()=>{
-    textDescriptionMeme[0].style.lineHeight=lineHeightSelector.value
-    textDescriptionMeme[1].style.lineHeight=lineHeightSelector.value
+    textMeme[0].style.lineHeight=lineHeightSelector.value
+    textMeme[1].style.lineHeight=lineHeightSelector.value
 }
+
+//
+
+const inputPadding=document.getElementById('input-padding')
+
+inputPadding.addEventListener('change', ()=>changePadding())
+
+const changePadding=()=>{
+    textMeme[0].style.padding= `${inputPadding.value}px 0px`
+    textMeme[1].style.padding= `${inputPadding.value}px 0px`
+}
+
+//
+const btnClose=document.getElementsByClassName('btn-close')
+console.log(btnClose)
+console.log(formatAside)
+
+btnClose[0].addEventListener('click', ()=>closeAside())
+btnClose[1].addEventListener('click', ()=>closeAside())
+
+const closeAside=()=>{
+    formatAside[0].classList.add('hidden')
+    imgAside.classList.add('hidden')
+    textAside.classList.add('hidden')
+}
+
+imgButton.addEventListener('click', ()=>openAsideImg())
+
+const openAsideImg=()=>{
+    formatAside[0].classList.remove('hidden')
+    imgAside.classList.remove('hidden')
+    textAside.classList.add('hidden')
+}
+
+textButton.addEventListener('click', ()=>openAsideText())
+
+const openAsideText=()=>{
+    formatAside[0].classList.remove('hidden')
+    imgAside.classList.add('hidden')
+    textAside.classList.remove('hidden')
+}
+
+//
+const ajustarImagen=()=>{
+    boxMeme.style.height=`${boxMeme.getBoundingClientRect().width}px`;
+}
+
+window[0].addEventListener('resize', ()=>ajustarImagen())

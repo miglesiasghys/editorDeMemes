@@ -15,11 +15,15 @@ body{
 
 /**/
 
+.container-body{
+    position: relative;
+}
 .container-header-main{
     display: flex;
     flex-direction: column;
     width: 82%;
     height: 100vh;
+    flex-grow: 1;
 }
 .container-header{
     background-color: #b5baba;
@@ -49,7 +53,7 @@ ul{
     align-items: center;
     height: 40px;
     padding: 0px 8px;
-    margin: 17px 10px 10px;
+    margin: 10px;
     font-family: 'Tektur', cursive;
     font-size: 15px;
     border: 1px solid transparent;
@@ -78,28 +82,24 @@ main{
     height: 100vh;
 }
 .container-box-meme{
-    width: 50%;
-    height: 100%;
+    width: 70vh;
+    height: 70vh;
     background-color: black;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 .text-meme{
-    margin: 0;
     color: black;
     background-color: white;
-    min-height: 17%;
+    padding: 35px 0px;
     width: 100%;
     display: flex;
-    align-items: center;
+    overflow:hidden;
     justify-content: center;
-    word-wrap: break-word;
-}
-.text-meme-description{
-    width: 100%;
     font-size: 30px;
     font-weight: 600;
-    text-align: center;
+    position: static;
 }
 .img-meme{
     height: 83%;
@@ -109,8 +109,15 @@ main{
     background-repeat: no-repeat;
     background-position:center;
 }
-.transparent{
+.transparent-top{
     background-color: transparent;
+    position: absolute;
+    top: 0;
+}
+.transparent-bottom{
+    background-color: transparent;
+    position: absolute;
+    bottom: 0;
 }
 .download{
     background-color: rgb(94, 132, 44);
@@ -124,12 +131,16 @@ main{
     flex-direction: column;
     width: 18%;
     background-color: #9c9a99;
+    position: relative;
+    overflow: auto;
 }
+
+/**/
+
 .format{
     flex-direction: column;
     justify-content: space-between;
-    padding-left: 10px;
-    padding-top: 20px;
+    padding: 5px;
     width: 90%;
     height: 100%;
     text-align:start;
@@ -141,16 +152,32 @@ main{
 .hidden{
     display: none;
 }
+
+/**/
+
+.btn-close{
+    position: absolute;
+    right: 0;
+    width: 20%;
+    border-radius: 5px;
+    height: 40px;
+    padding: 5px;
+    font-size: 15px;
+    border: 1px solid transparent;
+    background-color: transparent;
+    color: #2d2d2d;
+}
+.dark-btn-close{
+    color: #eae9e9;
+}
 .text-description{
     font-size: 25px;
 }
 
-/**/
-
 form{
     height: 95%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     flex-direction: column;
 }
 input{
@@ -165,7 +192,6 @@ input{
 textarea{
     width: 97%;
     min-height: 18px;
-    margin: 5px 0px;
     background-color: #eae9e9;
     border: 1px solid #252622;
     border-radius: 8px;
@@ -268,32 +294,67 @@ input[type="checkbox"]{
     background-color:#b0aaad;
     color: #2d2d2d;
 }
+
+
 /**/
-@media (max-width: 1250px){
+@media (max-width: 1300px){
     .container-format{
-        display: none;
+        position: absolute;
+        right: 0;
+        width: 20%;
+        height: 100vh;
     }
     .container-header-main{
         width: 100%;
     }
 }
-@media (max-width: 800px){
+@media (max-width: 1200px){
+    .container-format{
+        width: 23%;
+    }
+}
+@media (max-width: 1200px){
+    .container-format{
+        width: 25%;
+    }
     .container-box-meme{
-        width: 70%;
+        width: 80vh;
+        height: 80vh;
+    }
+}
+@media (max-width: 900px){
+    .container-format{
+        width: 30%;
+    }
+}
+@media (max-width: 800px){
+    .container-format{
+        width: 35%;
+    }
+}
+@media (max-width: 700px){
+    .container-format{
+        width: 40%;
+    }
+}
+@media (max-width: 600px){
+    .container-format{
+        width: 100%;
+        align-items: center;
+    }
+}
+@media (max-width: 600px){
+    .container-box-meme{
+        width: 90%;
+        height: 400px;
     }
 }
 @media (max-width: 500px){
-    .container-box-meme{
-        width: 80%;
-    }
     .title{
         font-size: 30px;
     }
 }
 @media (max-width: 400px){
-    .container-box-meme{
-        width: 90%;
-    }
     .text-meme-description{
         font-size: 30px;
     }

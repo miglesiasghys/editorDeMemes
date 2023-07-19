@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;900&family=Tektur:wght@400;500&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/f00683b7b2.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"
         integrity="sha512-csNcFYJniKjJxRWRV1R7fvnXrycHP6qDR21mgz1ZP55xY5d+aHLfo9/FcGDQLfn2IfngbAHd8LdfsagcCqgTcQ=="
@@ -21,9 +21,10 @@
 </head>
 <body>
     <div class="isflex container-body">
-        <div class="container">
+        <div class="container-header-main">
+
             <!-- INICIO DE HEADER -->
-            <header class="encabezado">
+            <header class="container-header">
                 <div>
                     <h2 class="title">
                         Generador de Memes
@@ -32,19 +33,19 @@
                 <div>
                     <ul class="isflex">
                         <li>
-                            <button class="button-box" id="imagen-btn">
+                            <button class="btn-box" id="imagen-btn">
                                 <i class="fa-regular fa-file-image"></i>
                                 Imagen
                             </button>
                         </li>
                         <li>
-                            <button class="button-box" id="texto-btn">
+                            <button class="btn-box" id="texto-btn">
                                 <i class="fa-solid fa-font"></i>
                                 Texto
                             </button>
                         </li>
                         <li>
-                            <button class="button-box isflex" id="modo-btn">
+                            <button class="btn-box isflex" id="modo-btn">
                                 <i class="fa-regular fa-lightbulb"></i>
                                 <p id="mode-btn-text">
                                 Modo claro
@@ -71,7 +72,7 @@
                         </p>
                     </div>
                 </div>
-                <button type="button" class="button-box download" id="download-btn">
+                <button type="button" class="btn-box download" id="download-btn">
                     <i class="fa-solid fa-download"></i>
                     Descargar meme
                 </button>
@@ -79,22 +80,22 @@
             <!-- FINAL DE MAIN  -->
 
         </div>
-        <div class="container-formato">
+        <div class="container-format isflex">
 
             <!-- INICIO ASIDE IMAGEN -->
-            <div class="formato" id="aside-imagen">
+            <div class="format isflex" id="aside-imagen">
                 <h3 class="text-description title">
                     IMAGEN
                 </h3>
                 <form>
-                    <label for="url">
+                    <label for="url-input">
                         URL:
                         <input type="text" placeholder="Ingrese la URL de la imagen." id="url-input" />
                     </label>
-                    <label for="fondo">
+                    <label for="input-color">
                         Fondo:
                     </label>
-                    <div class="selectores">
+                    <div class="selectors">
                         <div class="box-change-color">
                             <input type="color" class="input-color" id="input-color" />
                             <p id="color-name"class="color-name">
@@ -102,23 +103,23 @@
                             </p>
                         </div>
                         <label class="filters">
-                            <select name="fondo">
-                                <option value="ninguno">
+                            <select name="blends" id="filters-img">
+                                <option value="normal">
                                     Ninguno
                                 </option>
-                                <option value="aclarar">
+                                <option value="lighten">
                                     Aclarar
                                 </option>
-                                <option value="oscurecer">
+                                <option value="darken">
                                     Oscurecer
                                 </option>
-                                <option value="diferencia">
+                                <option value="difference">
                                     Diferencia
                                 </option>
-                                <option value="luminosidad">
+                                <option value="luminosity">
                                     Luminosidad
                                 </option>
-                                <option value="multiplicar"id="multiply">
+                                <option value="multiply">
                                     Multiplicar
                                 </option>
                             </select>
@@ -131,23 +132,23 @@
                     <label for="opacity-input">
                         Opacidad
                     </label>
-                    <input type="range" id="opacity-input" min="0" max="1" value="1" step="0.1" />
+                    <input type="range" id="opacity-input" min="0" max="1" value="1" step="0.1"/>
                     <label for="contrast-input">
                         Contraste
                     </label>
-                    <input type="range" id="contrast-input" min="100" max="1000" value="100" step="1" />
+                    <input type="range" id="contrast-input" min="100" max="1000" value="100" step="1"/>
                     <label for="blur-input">
                         Desenfoque
                     </label>
-                    <input type="range" id="blur-input" min="0" max="10" value="0" step="0.1" />
+                    <input type="range" id="blur-input" min="0" max="10" value="0" step="0.1"/>
                     <label for="grayscale-input">
                         Escala de grises
                     </label>
-                    <input type="range" id="grayscale-input" min="0" max="100" value="0" step="1"  />
+                    <input type="range" id="grayscale-input" min="0" max="100" value="0" step="1"/>
                     <label for="sepia-input">
                         Sepia
                     </label>
-                    <input type="range" id="sepia-input" min="0" max="100" value="0" step="1" />
+                    <input type="range" id="sepia-input" min="0" max="100" value="0" step="1"/>
                     <label for="hue-input">
                         HUE
                     </label>
@@ -160,7 +161,7 @@
                         Negativo
                     </label>
                     <input type="range" id="invert-input" min="0" max="1" value="0" step="0.1" />
-                    <button class="button-box" type="reset">
+                    <button class="btn-box" type="reset" id="btn-reset">
                         Reestablecer filtros
                     </button>
                 </form>
@@ -168,31 +169,32 @@
             <!-- FINAL ASIDE IMAGEN -->
 
             <!-- INICIO ASIDE TEXTO  -->
-            <div class="formato hidden" id="aside-texto">
+            <div class="format hidden isflex" id="aside-texto">
                 <h3 class="text-description title">
                     TEXTO
                 </h3>
                 <form>
-                    <label for="superior">
+                    <label for="top-text-input">
                         Superior:
                     </label>
-                    <input type="text" id="superior" placeholder="TOP TEXT"/>
+                    <textarea name="top-text-input" id="top-text-input" cols="10" rows="2" maxlength="35" placeholder="TOP TEXT"></textarea>
                     <div class="checkbox-container">
                         <input type="checkbox" id="checkbox-top-input"/>
-                        <label for="checkbox-superior">
+                        <label for="checkbox-top-input" class="text-hidden">
                             Sin texto superior
                         </label>
                     </div>
                     <label for="inferior">
                         Inferior:
                     </label>
-                    <input type="text" id="inferior" placeholder="BOTTOM TEXT"/>
+                    <textarea name="inferior" id="inferior" cols="10" rows="2" placeholder="BOTTOM TEXT" maxlength="35"></textarea>
                     <div class="checkbox-container">
                         <input type="checkbox" id="checkbox-bottom-input"/>
-                        <label for="checkbox-inferior">
+                        <label for="checkbox-inferior" class="text-hidden">
                             Sin texto inferior
                         </label>
                     </div>
+                    <!-- /*deje aca*/ -->
                     <label for="font">
                         Fuente:
                     </label>
@@ -234,13 +236,13 @@
                     <div class="container-format-text">
                         <input type="number" min="12" max="100" step="1" value="37" id="input-font-size" class="input-number-font"/>
                         <div class="container-btn-align">
-                            <button type="button" class="button-align">
+                            <button type="button" class="button-align" id="btn-align-left">
                                 <i class="fa-solid fa-align-left"></i>
                             </button>
-                            <button type="button" class="button-align">
+                            <button type="button" class="button-align" id="btn-align-center">
                                 <i class="fa-solid fa-align-center"></i>
                             </button>
-                            <button type="button" class="button-align">
+                            <button type="button" class="button-align" id="btn-align-right">
                                 <i class="fa-solid fa-align-right"></i>
                             </button>
                         </div>
@@ -273,13 +275,13 @@
                         CONTORNO
                     </label>
                     <div>
-                        <button type="button">
+                        <button type="button" class="btn-box">
                             Ninguno
                         </button>
-                        <button type="button">
+                        <button type="button" class="btn-box">
                             Claro
                         </button>
-                        <button type="button">
+                        <button type="button" class="btn-box">
                             Oscuro
                         </button>
                     </div>

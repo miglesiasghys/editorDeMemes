@@ -6,9 +6,10 @@ const modeButton=document.getElementById('modo-btn')
 
 const textAside=document.getElementById('aside-texto');
 const imgAside=document.getElementById('aside-imagen');
-const formatAside=document.getElementsByClassName('container-formato')
-const encabezado=document.getElementsByClassName('encabezado')
+const formatAside=document.getElementsByClassName('container-format')
+const encabezado=document.getElementsByClassName('container-header')
 const containerBody=document.getElementsByClassName('container-body')
+const btnBox=document.getElementsByClassName('btn-box')
 
 textButton.addEventListener('click', ()=> hideImgAside())
 imgButton.addEventListener('click', ()=> hideTextAside())
@@ -24,10 +25,14 @@ const hideTextAside=()=>{
     imgAside.classList.remove('hidden')
 }
 
-const changeMode=(e)=>{
+const changeMode=()=>{
     formatAside[0].classList.toggle('dark-aside');
     encabezado[0].classList.toggle('dark-header');
     containerBody[0].classList.toggle('dark-body');
+    btnBox[0].classList.toggle('dark-btn');
+    btnBox[1].classList.toggle('dark-btn')
+    btnBox[2].classList.toggle('dark-btn')
+    btnBox[4].classList.toggle('dark-btn')
     if (modeButton.innerText === "Modo oscuro") {
     modeButton.innerHTML = '<i class="fa-regular fa-lightbulb"></i> Modo claro';
     } else {
@@ -35,7 +40,9 @@ const changeMode=(e)=>{
     }
 }
 
-// cambio de color del div img-meme
+// IMAGEN
+
+// input color
 
 const boxMeme = document.getElementById('box-meme')
 const inputColor=document.getElementById('input-color')
@@ -48,7 +55,7 @@ const cambioDeColor = (e) =>{
 
 inputColor.addEventListener('input', (e)=>cambioDeColor(e))
 
-// imagen del meme
+// input imagen con url
 
 const imgMeme=document.getElementById('img-meme')
 const inputURL=document.getElementById('url-input')
@@ -57,23 +64,6 @@ inputURL.addEventListener('input', (e)=>changeBackground(e))
 
 const changeBackground= (e) => {
     imgMeme.style.backgroundImage=`url('${e.target.value}')`
-}
-
-// funcion Cambio de texto superior e inferior
-
-const topText=document.getElementById('top-text')
-const inputTop=document.getElementById('superior')
-const bottomText=document.getElementById('bottom-text')
-const inputBottom=document.getElementById('inferior')
-
-inputTop.addEventListener('change', (e)=>changeTextTop(e))
-inputBottom.addEventListener('change', (e)=>changeTextBottom(e))
-
-const changeTextTop= (e) => {
-    topText.textContent=`${e.target.value}`
-}
-const changeTextBottom= (e) => {
-    bottomText.textContent=`${e.target.value}`
 }
 
 //filtros
@@ -111,15 +101,48 @@ hueInput.addEventListener('input', (e)=>filtros(e))
 saturationInput.addEventListener('input', (e)=>filtros(e))
 invertInput.addEventListener('input', (e)=>filtros(e))
 
-// checkbox
+//selector de blend mode
+
+const filtersSelector=document.getElementById('filters-img')
+
+filtersSelector.addEventListener('change', ()=> changeFilter())
+
+const changeFilter=()=>{
+    imgMeme.style.mixBlendMode=filtersSelector.value
+}
+
+//TEXTO 
+
+// funcion Cambio de texto superior e inferior
+
+const topText=document.getElementById('top-text')
+const inputTop=document.getElementById('top-text-input')
+const bottomText=document.getElementById('bottom-text')
+const inputBottom=document.getElementById('inferior')
+
+inputTop.addEventListener('change', (e)=>changeTextTop(e))
+inputBottom.addEventListener('change', (e)=>changeTextBottom(e))
+
+const changeTextTop= (e) => {
+    topText.textContent=`${e.target.value}`
+}
+const changeTextBottom= (e) => {
+    bottomText.textContent=`${e.target.value}`
+}
+
+// checkbox texto
 
 const checkboxTopInput=document.getElementById('checkbox-top-input')
 const checkboxBottomInput=document.getElementById('checkbox-bottom-input')
 const containerTopText=document.getElementById('container-top-text')
 const containerBottomText=document.getElementById('container-bottom-text')
+const checkboxTransparent=document.getElementById('checkbox-transparent')
+const textMemeBackground=document.getElementsByClassName('text-meme')
 
 checkboxTopInput.addEventListener('change', ()=> hideTopText())
 checkboxBottomInput.addEventListener('change', ()=> hideBottomText())
+checkboxTransparent.addEventListener('change', ()=> boxTextTransparent())
+
 
 const hideTopText=()=>{
     if (checkboxTopInput.checked){
@@ -135,6 +158,16 @@ const hideBottomText=()=>{
         containerBottomText.classList.remove('hidden')
     }
 }
+const boxTextTransparent=()=>{
+    if (checkboxTransparent.checked){
+        textMemeBackground[0].classList.add('transparent')
+        textMemeBackground[1].classList.add('transparent')
+    }else{
+        textMemeBackground[0].classList.remove('transparent')
+        textMemeBackground[1].classList.remove('transparent')
+    }
+}
+
 //selector de fuentes 
 
 const fontSelector=document.getElementById('font-selector')
@@ -147,6 +180,29 @@ const changeFontFamily= ()=>{
     textDescriptionMeme[1].style.fontFamily=fontSelector.value
 }
 
+// btn text align
+
+const btnAlignLeft=document.getElementById('btn-align-left')
+const btnAlignCenter=document.getElementById('btn-align-center')
+const btnAlignRight=document.getElementById('btn-align-right')
+
+btnAlignLeft.addEventListener('click', ()=>changeAlignLeft())
+btnAlignCenter.addEventListener('click', ()=>changeAlignCenter())
+btnAlignRight.addEventListener('click', ()=>changeAlignRight())
+
+const changeAlignLeft=()=>{
+    topText.style.textAlign='left'
+    bottomText.style.textAlign= 'left'
+}
+const changeAlignCenter=()=>{
+    topText.style.textAlign='center'
+    bottomText.style.textAlign= 'center'
+}
+const changeAlignRight=()=>{
+    topText.style.textAlign='right'
+    bottomText.style.textAlign= 'right'
+}
+
 //btn de descarga
 
 const downloadBtn=document.getElementById('download-btn')
@@ -157,4 +213,19 @@ const downloadMeme=()=>{
     domtoimage.toBlob(boxMeme).then(function (blob) {
     window.saveAs(blob, "mi-meme.jpg")
 })
+}
+
+//
+
+const btnReset=document.getElementById('btn-reset')
+
+
+btnReset.addEventListener('click', ()=> reset ())
+
+const reset=()=>{
+    imgMeme.style.backgroundImage=('')
+    boxMeme.style.backgroundColor=('')
+    topText.textContent=('TOP TEXT')
+    bottomText.textContent=('BOTTOM TEXT')
+    colorName.textContent=('#000000')
 }

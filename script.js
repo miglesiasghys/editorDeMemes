@@ -1,4 +1,4 @@
-// cambio de modo y cambio de aside
+// CHANGE MODE, CHANGE ASIDE
 
 const textButton=document.getElementById('texto-btn');
 const imgButton=document.getElementById('imagen-btn')
@@ -33,6 +33,10 @@ const changeMode=()=>{
     btnBox[1].classList.toggle('dark-btn')
     btnBox[2].classList.toggle('dark-btn')
     btnBox[4].classList.toggle('dark-btn')
+    btnBox[5].classList.toggle('dark-btn')
+    btnBox[6].classList.toggle('dark-btn')
+    btnBox[7].classList.toggle('dark-btn')
+    btnBox[8].classList.toggle('dark-btn')
     btnClose[0].classList.toggle('dark-btn-close')
     btnClose[1].classList.toggle('dark-btn-close')
 
@@ -43,9 +47,63 @@ const changeMode=()=>{
     }
 }
 
-// IMAGEN
+//BOTON DE DESCARGA
 
-// input color
+const downloadBtn=document.getElementById('download-btn')
+
+downloadBtn.addEventListener('click', ()=>downloadMeme());
+
+const downloadMeme=()=>{
+    domtoimage.toBlob(boxMeme).then(function (blob) {
+    window.saveAs(blob, "mi-meme.jpg")
+})
+}
+
+// BOTON PARA CERRAR LOS ASIDE
+
+const btnClose=document.getElementsByClassName('btn-close')
+console.log(btnClose)
+console.log(formatAside)
+
+btnClose[0].addEventListener('click', ()=>closeAside())
+btnClose[1].addEventListener('click', ()=>closeAside())
+
+const closeAside=()=>{
+    formatAside[0].classList.add('hidden')
+    imgAside.classList.add('hidden')
+    textAside.classList.add('hidden')
+}
+
+imgButton.addEventListener('click', ()=>openAsideImg())
+
+const openAsideImg=()=>{
+    formatAside[0].classList.remove('hidden')
+    imgAside.classList.remove('hidden')
+    textAside.classList.add('hidden')
+}
+
+textButton.addEventListener('click', ()=>openAsideText())
+
+const openAsideText=()=>{
+    formatAside[0].classList.remove('hidden')
+    imgAside.classList.add('hidden')
+    textAside.classList.remove('hidden')
+}
+
+// >>>>>>.....IMAGEN.....<<<<<<<
+
+// INPUT: FUNCION CAMBIAR BACKGROUND IMG
+
+const imgMeme=document.getElementById('img-meme')
+const inputURL=document.getElementById('url-input')
+
+inputURL.addEventListener('input', (e)=>changeBackground(e))
+
+const changeBackground= (e) => {
+    imgMeme.style.backgroundImage=`url('${e.target.value}')`
+}
+
+// INPUT-COLOR PARA BOX-MEME
 
 const boxMeme = document.getElementById('box-meme')
 const inputColor=document.getElementById('input-color')
@@ -58,18 +116,17 @@ const cambioDeColor = (e) =>{
 
 inputColor.addEventListener('input', (e)=>cambioDeColor(e))
 
-// input imagen con url
+//SELECTOR DE BLEND MODE
 
-const imgMeme=document.getElementById('img-meme')
-const inputURL=document.getElementById('url-input')
+const filtersSelector=document.getElementById('filters-img')
 
-inputURL.addEventListener('input', (e)=>changeBackground(e))
+filtersSelector.addEventListener('change', ()=> changeFilter())
 
-const changeBackground= (e) => {
-    imgMeme.style.backgroundImage=`url('${e.target.value}')`
+const changeFilter=()=>{
+    imgMeme.style.mixBlendMode=filtersSelector.value
 }
 
-//filtros
+//FILTROS DE IMAGEN
 
 const brightInput=document.getElementById('bright-input')
 const opacityInput=document.getElementById('opacity-input')
@@ -104,19 +161,23 @@ hueInput.addEventListener('input', (e)=>filtros(e))
 saturationInput.addEventListener('input', (e)=>filtros(e))
 invertInput.addEventListener('input', (e)=>filtros(e))
 
-//selector de blend mode
+//FUNCION DE RESETEADO DE FILTROS
 
-const filtersSelector=document.getElementById('filters-img')
+const btnReset=document.getElementById('btn-reset')
 
-filtersSelector.addEventListener('change', ()=> changeFilter())
+btnReset.addEventListener('click', ()=> reset ())
 
-const changeFilter=()=>{
-    imgMeme.style.mixBlendMode=filtersSelector.value
+const reset=()=>{
+    imgMeme.style.backgroundImage=('')
+    boxMeme.style.backgroundColor=('')
+    topText.textContent=('TOP TEXT')
+    bottomText.textContent=('BOTTOM TEXT')
+    colorName.textContent=('#000000')
 }
 
-//TEXTO 
+//>>>>>>>>.....TEXTO.....<<<<<<<<<
 
-// funcion Cambio de texto superior e inferior
+// FUNCION PARA INGRESAR TEXTO
 
 const topText=document.getElementById('top-text')
 const inputTop=document.getElementById('top-text-input')
@@ -133,7 +194,7 @@ const changeTextBottom= (e) => {
     bottomText.textContent=`${e.target.value}`
 }
 
-// checkbox texto
+// CHECKBOX PARA OCULTAR TEXTO
 
 const checkboxTopInput=document.getElementById('checkbox-top-input')
 const checkboxBottomInput=document.getElementById('checkbox-bottom-input')
@@ -143,7 +204,6 @@ const textMeme=document.getElementsByClassName('text-meme')
 checkboxTopInput.addEventListener('change', ()=> hideTopText())
 checkboxBottomInput.addEventListener('change', ()=> hideBottomText())
 checkboxTransparent.addEventListener('change', ()=> boxTextTransparent())
-
 
 const hideTopText=()=>{
     if (checkboxTopInput.checked){
@@ -169,7 +229,7 @@ const boxTextTransparent=()=>{
     }
 }
 
-//selector de fuentes 
+//SELECTOR DE FUENTES
 
 const fontSelector=document.getElementById('font-selector')
 
@@ -179,7 +239,8 @@ const changeFontFamily= ()=>{
     textMeme[0].style.fontFamily=fontSelector.value
     textMeme[1].style.fontFamily=fontSelector.value
 }
-//
+
+//FUNCION PARA MODIFICAR FONT SIZE
 
 const inputFontSize=document.getElementById('input-font-size')
 
@@ -190,10 +251,9 @@ const changeFontSize=()=>{
     bottomText.style.fontSize=`${inputFontSize.value}px`
 }
 
-// btn text align
+// BOTON PARA ALINEACION DE TEXTO
 
 const btnAlignLeft=document.getElementById('btn-align-left')
-console.log(btnAlignLeft)
 const btnAlignCenter=document.getElementById('btn-align-center')
 const btnAlignRight=document.getElementById('btn-align-right')
 
@@ -209,65 +269,13 @@ const changeAlignLeft=()=>{
 const changeAlignCenter=()=>{
     textMeme[0].style.justifyContent='center'
     textMeme[1].style.justifyContent='center'
-    console.log(changeAlignCenter)
 }
 const changeAlignRight=()=>{
     textMeme[0].style.justifyContent='end'
     textMeme[1].style.justifyContent='end'
-    console.log(changeAlignRight)
 }
 
-//btn de descarga
-
-const downloadBtn=document.getElementById('download-btn')
-
-downloadBtn.addEventListener('click', ()=>downloadMeme());
-
-const downloadMeme=()=>{
-    domtoimage.toBlob(boxMeme).then(function (blob) {
-    window.saveAs(blob, "mi-meme.jpg")
-})
-}
-
-//
-
-const btnReset=document.getElementById('btn-reset')
-
-
-btnReset.addEventListener('click', ()=> reset ())
-
-const reset=()=>{
-    imgMeme.style.backgroundImage=('')
-    boxMeme.style.backgroundColor=('')
-    topText.textContent=('TOP TEXT')
-    bottomText.textContent=('BOTTOM TEXT')
-    colorName.textContent=('#000000')
-}
-
-// botones de contorno de texto 
-
-const btnNotContour=document.getElementById('btn-not-contour')
-const btnLightContour=document.getElementById('btn-light-contour')
-const btnDarkContour=document.getElementById('btn-dark-contour')
-
-btnNotContour.addEventListener('click', ()=>notContour())
-btnLightContour.addEventListener('click', ()=>lightContour())
-btnDarkContour.addEventListener('click', ()=> darkContour())
-
-const notContour=()=>{
-    textMeme[0].style.textShadow='none'
-    textMeme[1].style.textShadow='none'
-}
-const lightContour=()=>{
-    textMeme[0].style.textShadow="2px 2px 0px white, 2px -2px 0px white, -2px 2px 0px white, -2px -2px 0px white, 2px 0px 0px white, 0px 2px 0px white, -2px 0px 0px white, 0px -2px 0px white"
-    textMeme[1].style.textShadow="2px 2px 0px white, 2px -2px 0px white, -2px 2px 0px white, -2px -2px 0px white, 2px 0px 0px white, 0px 2px 0px white, -2px 0px 0px white, 0px -2px 0px white"
-}
-const darkContour=()=>{
-    textMeme[0].style.textShadow='2px 2px 0px black, 2px -2px 0px black, -2px 2px 0px black, -2px -2px 0px black, 2px 0px 0px black, 0px 2px 0px black, -2px 0px 0px black, 0px -2px 0px black'
-    textMeme[1].style.textShadow='2px 2px 0px black, 2px -2px 0px black, -2px 2px 0px black, -2px -2px 0px black, 2px 0px 0px black, 0px 2px 0px black, -2px 0px 0px black, 0px -2px 0px black'
-}
-
-//input color de texto y de background
+//INPUT COLOR DE TEXTO Y DE BACKGROUND
 
 const inputColorText=document.getElementById('input-text-color')
 const colorNameText=document.getElementById('color-name-text')
@@ -291,18 +299,30 @@ const changeColorBackground = (e) =>{
     colorNameBackground.textContent=`${inputColorBackground.value}`
 }
 
-// cambiar interlineado
+// BOTONES DE CONTORNO DE TEXTO
 
-const lineHeightSelector=document.getElementById('select-line-height')
+const btnNotContour=document.getElementById('btn-not-contour')
+const btnLightContour=document.getElementById('btn-light-contour')
+const btnDarkContour=document.getElementById('btn-dark-contour')
 
-lineHeightSelector.addEventListener('change', ()=> changeLineHeight())
+btnNotContour.addEventListener('click', ()=>notContour())
+btnLightContour.addEventListener('click', ()=>lightContour())
+btnDarkContour.addEventListener('click', ()=> darkContour())
 
-const changeLineHeight=()=>{
-    textMeme[0].style.lineHeight=lineHeightSelector.value
-    textMeme[1].style.lineHeight=lineHeightSelector.value
+const notContour=()=>{
+    textMeme[0].style.textShadow='none'
+    textMeme[1].style.textShadow='none'
+}
+const lightContour=()=>{
+    textMeme[0].style.textShadow="2px 2px 0px white, 2px -2px 0px white, -2px 2px 0px white, -2px -2px 0px white, 2px 0px 0px white, 0px 2px 0px white, -2px 0px 0px white, 0px -2px 0px white"
+    textMeme[1].style.textShadow="2px 2px 0px white, 2px -2px 0px white, -2px 2px 0px white, -2px -2px 0px white, 2px 0px 0px white, 0px 2px 0px white, -2px 0px 0px white, 0px -2px 0px white"
+}
+const darkContour=()=>{
+    textMeme[0].style.textShadow='2px 2px 0px black, 2px -2px 0px black, -2px 2px 0px black, -2px -2px 0px black, 2px 0px 0px black, 0px 2px 0px black, -2px 0px 0px black, 0px -2px 0px black'
+    textMeme[1].style.textShadow='2px 2px 0px black, 2px -2px 0px black, -2px 2px 0px black, -2px -2px 0px black, 2px 0px 0px black, 0px 2px 0px black, -2px 0px 0px black, 0px -2px 0px black'
 }
 
-//
+// FUNCION DE ESPACIADO
 
 const inputPadding=document.getElementById('input-padding')
 
@@ -313,39 +333,13 @@ const changePadding=()=>{
     textMeme[1].style.padding= `${inputPadding.value}px 0px`
 }
 
-//
-const btnClose=document.getElementsByClassName('btn-close')
-console.log(btnClose)
-console.log(formatAside)
+// FUNCION DE INTERLINEADO
 
-btnClose[0].addEventListener('click', ()=>closeAside())
-btnClose[1].addEventListener('click', ()=>closeAside())
+const lineHeightSelector=document.getElementById('select-line-height')
 
-const closeAside=()=>{
-    formatAside[0].classList.add('hidden')
-    imgAside.classList.add('hidden')
-    textAside.classList.add('hidden')
+lineHeightSelector.addEventListener('change', ()=> changeLineHeight())
+
+const changeLineHeight=()=>{
+    textMeme[0].style.lineHeight=lineHeightSelector.value
+    textMeme[1].style.lineHeight=lineHeightSelector.value
 }
-
-imgButton.addEventListener('click', ()=>openAsideImg())
-
-const openAsideImg=()=>{
-    formatAside[0].classList.remove('hidden')
-    imgAside.classList.remove('hidden')
-    textAside.classList.add('hidden')
-}
-
-textButton.addEventListener('click', ()=>openAsideText())
-
-const openAsideText=()=>{
-    formatAside[0].classList.remove('hidden')
-    imgAside.classList.add('hidden')
-    textAside.classList.remove('hidden')
-}
-
-//
-const ajustarImagen=()=>{
-    boxMeme.style.height=`${boxMeme.getBoundingClientRect().width}px`;
-}
-
-window[0].addEventListener('resize', ()=>ajustarImagen())

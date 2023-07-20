@@ -36,7 +36,6 @@ const changeMode=()=>{
     btnBox[5].classList.toggle('dark-btn')
     btnBox[6].classList.toggle('dark-btn')
     btnBox[7].classList.toggle('dark-btn')
-    btnBox[8].classList.toggle('dark-btn')
     btnClose[0].classList.toggle('dark-btn-close')
     btnClose[1].classList.toggle('dark-btn-close')
 
@@ -62,8 +61,6 @@ const downloadMeme=()=>{
 // BOTON PARA CERRAR LOS ASIDE
 
 const btnClose=document.getElementsByClassName('btn-close')
-console.log(btnClose)
-console.log(formatAside)
 
 btnClose[0].addEventListener('click', ()=>closeAside())
 btnClose[1].addEventListener('click', ()=>closeAside())
